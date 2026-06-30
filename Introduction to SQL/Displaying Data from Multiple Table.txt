@@ -1,0 +1,989 @@
+                             Displaying Data from Multiple Tables Using Joins
+
+Write a query for the HR department to produce the addresses of all the departments. Use the EMP and DEPT tables. Show the EMPNO, ENAME,SAL, DNAME and LOC in the output. Use a NATURAL JOIN to produce the results.	Natural Join	
+
+
+> SELECT employee_id,  first_name, last_name, salary, department_name, street_address, city, state_province, postal_code, country_id FROM employees NATURAL JOIN departments NATURAL JOIN locations;
+
+EMPLOYEE_ID                         FIRST_NAME                                   LAST_NAME                                             SALARY                         DEPARTMENT_NAME                                        STREET_ADDRESS                                                CITY                                                   STATE_PROVINCE                                    POSTAL_CODE                          CO
+-----------                         --------------------                         -------------------------                         ----------                         ------------------------------                         ----------------------------------------                              ------------------------------                         -------------------------                         ------------                         --
+        101                         Neena                                        Kochhar                                                17000                         Executive                                              2004 Charade Rd                                               Seattle                                                Washington                                        98199                                US
+        102                         Lex                                          De Haan                                                17000                         Executive                                              2004 Charade Rd                                               Seattle                                                Washington                                        98199                                US
+        104                         Bruce                                        Ernst                                                   6000                         IT                                                     2014 Jabberwocky Rd                                           Southlake                                              Texas                                             26192                                US
+        105                         David                                        Austin                                                  4800                         IT                                                     2014 Jabberwocky Rd                                           Southlake                                              Texas                                             26192                                US
+        106                         Valli                                        Pataballa                                               4800                         IT                                                     2014 Jabberwocky Rd                                           Southlake                                              Texas                                             26192                                US
+        107                         Diana                                        Lorentz                                                 4200                         IT                                                     2014 Jabberwocky Rd                                           Southlake                                              Texas                                             26192                                US
+        109                         Daniel                                       Faviet                                                  9000                         Finance                                                2004 Charade Rd                                               Seattle                                                Washington                                        98199                                US
+        110                         John                                         Chen                                                    8200                         Finance                                                2004 Charade Rd                                               Seattle                                                Washington                                        98199                                US
+        111                         Ismael                                       Sciarra                                                 7700                         Finance                                                2004 Charade Rd                                               Seattle                                                Washington                                        98199                                US
+        112                         Jose Manuel                                  Urman                                                   7800                         Finance                                                2004 Charade Rd                                               Seattle                                                Washington                                        98199                                US
+        113                         Luis                                         Popp                                                    6900                         Finance                                                2004 Charade Rd                                               Seattle                                                Washington                                        98199                                US
+        115                         Alexander                                    Khoo                                                    3100                         Purchasing                                             2004 Charade Rd                                               Seattle                                                Washington                                        98199                                US
+        116                         Shelli                                       Baida                                                   2900                         Purchasing                                             2004 Charade Rd                                               Seattle                                                Washington                                        98199                                US
+        117                         Sigal                                        Tobias                                                  2800                         Purchasing                                             2004 Charade Rd                                               Seattle                                                Washington                                        98199                                US
+        118                         Guy                                          Himuro                                                  2600                         Purchasing                                             2004 Charade Rd                                               Seattle                                                Washington                                        98199                                US
+        119                         Karen                                        Colmenares                                              2500                         Purchasing                                             2004 Charade Rd                                               Seattle                                                Washington                                        98199                                US
+        129                         Laura                                        Bissot                                                  3300                         Shipping                                               2011 Interiors Blvd                                           South San Francisco                                    California                                        99236                                US
+        130                         Mozhe                                        Atkinson                                                2800                         Shipping                                               2011 Interiors Blvd                                           South San Francisco                                    California                                        99236                                US
+        131                         James                                        Marlow                                                  2500                         Shipping                                               2011 Interiors Blvd                                           South San Francisco                                    California                                        99236                                US
+        132                         TJ                                           Olson                                                   2100                         Shipping                                               2011 Interiors Blvd                                           South San Francisco                                    California                                        99236                                US
+        150                         Peter                                        Tucker                                                 10000                         Sales                                                  Magdalen Centre, The Oxford Science Park                              Oxford                                                 Oxford                                            OX9 9ZB                              UK
+        151                         David                                        Bernstein                                               9500                         Sales                                                  Magdalen Centre, The Oxford Science Park                              Oxford                                                 Oxford                                            OX9 9ZB                              UK
+        152                         Peter                                        Hall                                                    9000                         Sales                                                  Magdalen Centre, The Oxford Science Park                              Oxford                                                 Oxford                                            OX9 9ZB                              UK
+        153                         Christopher                                  Olsen                                                   8000                         Sales                                                  Magdalen Centre, The Oxford Science Park                              Oxford                                                 Oxford                                            OX9 9ZB                              UK
+        154                         Nanette                                      Cambrault                                               7500                         Sales                                                  Magdalen Centre, The Oxford Science Park                              Oxford                                                 Oxford                                            OX9 9ZB                              UK
+        155                         Oliver                                       Tuvault                                                 7000                         Sales                                                  Magdalen Centre, The Oxford Science Park                              Oxford                                                 Oxford                                            OX9 9ZB                              UK
+        184                         Nandita                                      Sarchand                                                4200                         Shipping                                               2011 Interiors Blvd                                           South San Francisco                                    California                                        99236                                US
+        185                         Alexis                                       Bull                                                    4100                         Shipping                                               2011 Interiors Blvd                                           South San Francisco                                    California                                        99236                                US
+        186                         Julia                                        Dellinger                                               3400                         Shipping                                               2011 Interiors Blvd                                           South San Francisco                                    California                                        99236                                US
+        187                         Anthony                                      Cabrio                                                  3000                         Shipping                                               2011 Interiors Blvd                                           South San Francisco                                    California                                        99236                                US
+        202                         Pat                                          Fay                                                     6000                         Marketing                                              147 Spadina Ave                                               Toronto                                                Ontario                                           M5V 2L7                              CA
+        206                         William                                      Gietz                                                   8300                         Accounting                                             2004 Charade Rd                                               Seattle                                                Washington                                        98199                                US
+
+32 rows selected.
+
+
+
+2. The HR department needs a report of all employees. Write a query to display the JOB,MGR,SAL,COMM,DNAME of employees whose JOB is SALESMAN.	Equi Join
+
+SELECT EMPLOYEES.LAST_NAME, EMPLOYEES.JOB_ID, EMPLOYEES.MANAGER_ID, EMPLOYEES.SALARY, EMPLOYEES.COMMISSION_PCT, DEPARTMENTS.DEPARTMENT_NAME FROM EMPLOYEES JOIN DEPARTMENTS ON EMPLOYEES.DEPARTMENT_ID = DEPARTMENTS.DEPARTMENT_ID WHERE JOB_ID = 'SA_REP';
+
+LAST_NAME                                         JOB_ID                             MANAGER_ID                             SALARY                         COMMISSION_PCT                          DEPARTMENT_NAME
+-------------------------                         ----------                         ----------                         ----------                         --------------                          ------------------------------
+Tucker                                            SA_REP                                    145                              10000                             .3                          Sales
+Johnson                                           SA_REP                                    149                               6200                             .1                          Sales
+Hall                                              SA_REP                                    145                               9000                            .25                          Sales
+Olsen                                             SA_REP                                    145                               8000                             .2                          Sales
+Cambrault                                         SA_REP                                    145                               7500                             .2                          Sales
+Tuvault                                           SA_REP                                    145                               7000                            .15                          Sales
+King                                              SA_REP                                    146                              10000                            .35                          Sales
+Sully                                             SA_REP                                    146                               9500                            .35                          Sales
+McEwen                                            SA_REP                                    146                               9000                            .35                          Sales
+Smith                                             SA_REP                                    146                               8000                             .3                          Sales
+Doran                                             SA_REP                                    146                               7500                             .3                          Sales
+Sewall                                            SA_REP                                    146                               7000                            .25                          Sales
+Vishney                                           SA_REP                                    147                              10500                            .25                          Sales
+Greene                                            SA_REP                                    147                               9500                            .15                          Sales
+Marvins                                           SA_REP                                    147                               7200                             .1                          Sales
+Lee                                               SA_REP                                    147                               6800                             .1                          Sales
+Ande                                              SA_REP                                    147                               6400                             .1                          Sales
+Banda                                             SA_REP                                    147                               6200                             .1                          Sales
+Ozer                                              SA_REP                                    148                              11500                            .25                          Sales
+Bloom                                             SA_REP                                    148                              10000                             .2                          Sales
+Fox                                               SA_REP                                    148                               9600                             .2                          Sales
+Smith                                             SA_REP                                    148                               7400                            .15                          Sales
+Bates                                             SA_REP                                    148                               7300                            .15                          Sales
+Kumar                                             SA_REP                                    148                               6100                             .1                          Sales
+Abel                                              SA_REP                                    149                              11000                             .3                          Sales
+Hutton                                            SA_REP                                    149                               8800                            .25                          Sales
+Taylor                                            SA_REP                                    149                               8600                             .2                          Sales
+Livingston                                        SA_REP                                    149                               8400                             .2                          Sales
+Bernstein                                         SA_REP                                    145                               9500                            .25                          Sales
+
+29 rows selected.
+	
+3. The HR department needs a report of employees in LOC  DALLAS. Display the ENAME, job, DEPTNO, and DNAME for all employees who work in DALLAS.	Equi Join	
+
+SELECT ename, job, deptno, dname FROM emp e, dept d WHERE e.deptno = d.deptno AND loc = 'DALLAS';
+
+4. Create a report to display employees’ ename and employee number along with their manager’s name and manager number. Label the columns Employee, Emp#, Manager, and Mgr#, respectively.	Self Join
+
+
+SQL> SELECT e.first_name||' '||e.last_name AS "Employee",e.employee_id AS "Emp#",m.first_name||' '||m.last_name AS "Manager",m.employee_id AS "Mgr#" FROM employees e JOIN employees m ON e.manager_id=m.employee_id;
+
+Employee                                                                     Emp#                         Manager                                                           Mgr#
+----------------------------------------------                         ----------                         ----------------------------------------------                   ----------
+Neena Kochhar                                                                 101                         Steven King                                                                     100
+Lex De Haan                                                                   102                         Steven King                                                                     100
+Den Raphaely                                                                  114                         Steven King                                                                     100
+Matthew Weiss                                                                 120                         Steven King                                                                     100
+Adam Fripp                                                                    121                         Steven King                                                                     100
+Payam Kaufling                                                                122                         Steven King                                                                     100
+Shanta Vollman                                                                123                         Steven King                                                                     100
+Kevin Mourgos                                                                 124                         Steven King                                                                     100
+John Russell                                                                  145                         Steven King                                                                     100
+Karen Partners                                                                146                         Steven King                                                                     100
+Alberto Errazuriz                                                             147                         Steven King                                                                     100
+Gerald Cambrault                                                              148                         Steven King                                                                     100
+Eleni Zlotkey                                                                 149                         Steven King                                                                     100
+Michael Hartstein                                                             201                         Steven King                                                                     100
+Nancy Greenberg                                                               108                         Neena Kochhar                                                           101
+Jennifer Whalen                                                               200                         Neena Kochhar                                                           101
+Susan Mavris                                                                  203                         Neena Kochhar                                                           101
+Hermann Baer                                                                  204                         Neena Kochhar                                                           101
+Shelley Higgins                                                               205                         Neena Kochhar                                                           101
+Alexander Hunold                                                              103                         Lex De Haan                                                                     102
+Bruce Ernst                                                                   104                         Alexander Hunold                                                                103
+David Austin                                                                  105                         Alexander Hunold                                                                103
+Valli Pataballa                                                               106                         Alexander Hunold                                                                103
+Diana Lorentz                                                                 107                         Alexander Hunold                                                                103
+Daniel Faviet                                                                 109                         Nancy Greenberg                                                         108
+John Chen                                                                     110                         Nancy Greenberg                                                         108
+Ismael Sciarra                                                                111                         Nancy Greenberg                                                         108
+Jose Manuel Urman                                                             112                         Nancy Greenberg                                                         108
+Luis Popp                                                                     113                         Nancy Greenberg                                                         108
+Alexander Khoo                                                                115                         Den Raphaely                                                                    114
+Shelli Baida                                                                  116                         Den Raphaely                                                                    114
+Sigal Tobias                                                                  117                         Den Raphaely                                                                    114
+Guy Himuro                                                                    118                         Den Raphaely                                                                    114
+Karen Colmenares                                                              119                         Den Raphaely                                                                    114
+Julia Nayer                                                                   125                         Matthew Weiss                                                           120
+Irene Mikkilineni                                                             126                         Matthew Weiss                                                           120
+James Landry                                                                  127                         Matthew Weiss                                                           120
+Steven Markle                                                                 128                         Matthew Weiss                                                           120
+Winston Taylor                                                                180                         Matthew Weiss                                                           120
+Jean Fleaur                                                                   181                         Matthew Weiss                                                           120
+Martha Sullivan                                                               182                         Matthew Weiss                                                           120
+Girard Geoni                                                                  183                         Matthew Weiss                                                           120
+Laura Bissot                                                                  129                         Adam Fripp                                                                      121
+Mozhe Atkinson                                                                130                         Adam Fripp                                                                      121
+James Marlow                                                                  131                         Adam Fripp                                                                      121
+TJ Olson                                                                      132                         Adam Fripp                                                                      121
+Nandita Sarchand                                                              184                         Adam Fripp                                                                      121
+Alexis Bull                                                                   185                         Adam Fripp                                                                      121
+Julia Dellinger                                                               186                         Adam Fripp                                                                      121
+Anthony Cabrio                                                                187                         Adam Fripp                                                                      121
+Jason Mallin                                                                  133                         Payam Kaufling                                                          122
+Michael Rogers                                                                134                         Payam Kaufling                                                          122
+Ki Gee                                                                        135                         Payam Kaufling                                                          122
+Hazel Philtanker                                                              136                         Payam Kaufling                                                          122
+Kelly Chung                                                                   188                         Payam Kaufling                                                          122
+Jennifer Dilly                                                                189                         Payam Kaufling                                                          122
+Timothy Gates                                                                 190                         Payam Kaufling                                                          122
+Randall Perkins                                                               191                         Payam Kaufling                                                          122
+Renske Ladwig                                                                 137                         Shanta Vollman                                                          123
+Stephen Stiles                                                                138                         Shanta Vollman                                                          123
+John Seo                                                                      139                         Shanta Vollman                                                          123
+Joshua Patel                                                                  140                         Shanta Vollman                                                          123
+Sarah Bell                                                                    192                         Shanta Vollman                                                          123
+Britney Everett                                                               193                         Shanta Vollman                                                          123
+Samuel McCain                                                                 194                         Shanta Vollman                                                          123
+Vance Jones                                                                   195                         Shanta Vollman                                                          123
+Trenna Rajs                                                                   141                         Kevin Mourgos                                                           124
+Curtis Davies                                                                 142                         Kevin Mourgos                                                           124
+Randall Matos                                                                 143                         Kevin Mourgos                                                           124
+Peter Vargas                                                                  144                         Kevin Mourgos                                                           124
+Alana Walsh                                                                   196                         Kevin Mourgos                                                           124
+Kevin Feeney                                                                  197                         Kevin Mourgos                                                           124
+Donald OConnell                                                               198                         Kevin Mourgos                                                           124
+Douglas Grant                                                                 199                         Kevin Mourgos                                                           124
+Peter Tucker                                                                  150                         John Russell                                                                    145
+David Bernstein                                                               151                         John Russell                                                                    145
+Peter Hall                                                                    152                         John Russell                                                                    145
+Christopher Olsen                                                             153                         John Russell                                                                    145
+Nanette Cambrault                                                             154                         John Russell                                                                    145
+Oliver Tuvault                                                                155                         John Russell                                                                    145
+Janette King                                                                  156                         Karen Partners                                                          146
+Patrick Sully                                                                 157                         Karen Partners                                                          146
+Allan McEwen                                                                  158                         Karen Partners                                                          146
+Lindsey Smith                                                                 159                         Karen Partners                                                          146
+Louise Doran                                                                  160                         Karen Partners                                                          146
+Sarath Sewall                                                                 161                         Karen Partners                                                          146
+Clara Vishney                                                                 162                         Alberto Errazuriz                                                               147
+Danielle Greene                                                               163                         Alberto Errazuriz                                                               147
+Mattea Marvins                                                                164                         Alberto Errazuriz                                                               147
+David Lee                                                                     165                         Alberto Errazuriz                                                               147
+Sundar Ande                                                                   166                         Alberto Errazuriz                                                               147
+Amit Banda                                                                    167                         Alberto Errazuriz                                                               147
+Lisa Ozer                                                                     168                         Gerald Cambrault                                                                148
+Harrison Bloom                                                                169                         Gerald Cambrault                                                                148
+Tayler Fox                                                                    170                         Gerald Cambrault                                                                148
+William Smith                                                                 171                         Gerald Cambrault                                                                148
+Elizabeth Bates                                                               172                         Gerald Cambrault                                                                148
+Sundita Kumar                                                                 173                         Gerald Cambrault                                                                148
+Ellen Abel                                                                    174                         Eleni Zlotkey                                                           149
+Alyssa Hutton                                                                 175                         Eleni Zlotkey                                                           149
+Jonathon Taylor                                                               176                         Eleni Zlotkey                                                           149
+Jack Livingston                                                               177                         Eleni Zlotkey                                                           149
+Kimberely Grant                                                               178                         Eleni Zlotkey                                                           149
+Charles Johnson                                                               179                         Eleni Zlotkey                                                           149
+Pat Fay                                                                       202                         Michael Hartstein                                                               201
+William Gietz                                                                 206                         Shelley Higgins                                                         205
+
+106 rows selected.
+	
+5. Modify the previous Query to display all employees including King, who has no manager. Order the results by the employee number.	Outer Join
+
+SQL> SELECT e.first_name||' '||e.last_name AS "Employee",e.employee_id AS "Emp#",m.first_name||' '||m.last_name AS "Manager",m.employee_id AS "Mgr#" FROM employees e LEFT OUTER JOIN employees m ON e.manager_id=m.employee_id ORDER BY e.employee_id;
+
+Employee                                                                     Emp#                         Manager                                                                      Mgr#
+----------------------------------------------                         ----------                         ----------------------------------------------                         ----------
+Steven King                                                                   100
+Neena Kochhar                                                                 101                         Steven King                                                                   100
+Lex De Haan                                                                   102                         Steven King                                                                   100
+Alexander Hunold                                                              103                         Lex De Haan                                                                   102
+Bruce Ernst                                                                   104                         Alexander Hunold                                                              103
+David Austin                                                                  105                         Alexander Hunold                                                              103
+Valli Pataballa                                                               106                         Alexander Hunold                                                              103
+Diana Lorentz                                                                 107                         Alexander Hunold                                                              103
+Nancy Greenberg                                                               108                         Neena Kochhar                                                                 101
+Daniel Faviet                                                                 109                         Nancy Greenberg                                                               108
+John Chen                                                                     110                         Nancy Greenberg                                                               108
+Ismael Sciarra                                                                111                         Nancy Greenberg                                                               108
+Jose Manuel Urman                                                             112                         Nancy Greenberg                                                               108
+Luis Popp                                                                     113                         Nancy Greenberg                                                               108
+Den Raphaely                                                                  114                         Steven King                                                                   100
+Alexander Khoo                                                                115                         Den Raphaely                                                                  114
+Shelli Baida                                                                  116                         Den Raphaely                                                                  114
+Sigal Tobias                                                                  117                         Den Raphaely                                                                  114
+Guy Himuro                                                                    118                         Den Raphaely                                                                  114
+Karen Colmenares                                                              119                         Den Raphaely                                                                  114
+Matthew Weiss                                                                 120                         Steven King                                                                   100
+Adam Fripp                                                                    121                         Steven King                                                                   100
+Payam Kaufling                                                                122                         Steven King                                                                   100
+Shanta Vollman                                                                123                         Steven King                                                                   100
+Kevin Mourgos                                                                 124                         Steven King                                                                   100
+Julia Nayer                                                                   125                         Matthew Weiss                                                                 120
+Irene Mikkilineni                                                             126                         Matthew Weiss                                                                 120
+James Landry                                                                  127                         Matthew Weiss                                                                 120
+Steven Markle                                                                 128                         Matthew Weiss                                                                 120
+Laura Bissot                                                                  129                         Adam Fripp                                                                    121
+Mozhe Atkinson                                                                130                         Adam Fripp                                                                    121
+James Marlow                                                                  131                         Adam Fripp                                                                    121
+TJ Olson                                                                      132                         Adam Fripp                                                                    121
+Jason Mallin                                                                  133                         Payam Kaufling                                                                122
+Michael Rogers                                                                134                         Payam Kaufling                                                                122
+Ki Gee                                                                        135                         Payam Kaufling                                                                122
+Hazel Philtanker                                                              136                         Payam Kaufling                                                                122
+Renske Ladwig                                                                 137                         Shanta Vollman                                                                123
+Stephen Stiles                                                                138                         Shanta Vollman                                                                123
+John Seo                                                                      139                         Shanta Vollman                                                                123
+Joshua Patel                                                                  140                         Shanta Vollman                                                                123
+Trenna Rajs                                                                   141                         Kevin Mourgos                                                                 124
+Curtis Davies                                                                 142                         Kevin Mourgos                                                                 124
+Randall Matos                                                                 143                         Kevin Mourgos                                                                 124
+Peter Vargas                                                                  144                         Kevin Mourgos                                                                 124
+John Russell                                                                  145                         Steven King                                                                   100
+Karen Partners                                                                146                         Steven King                                                                   100
+Alberto Errazuriz                                                             147                         Steven King                                                                   100
+Gerald Cambrault                                                              148                         Steven King                                                                   100
+Eleni Zlotkey                                                                 149                         Steven King                                                                   100
+Peter Tucker                                                                  150                         John Russell                                                                  145
+David Bernstein                                                               151                         John Russell                                                                  145
+Peter Hall                                                                    152                         John Russell                                                                  145
+Christopher Olsen                                                             153                         John Russell                                                                  145
+Nanette Cambrault                                                             154                         John Russell                                                                  145
+Oliver Tuvault                                                                155                         John Russell                                                                  145
+Janette King                                                                  156                         Karen Partners                                                                146
+Patrick Sully                                                                 157                         Karen Partners                                                                146
+Allan McEwen                                                                  158                         Karen Partners                                                                146
+Lindsey Smith                                                                 159                         Karen Partners                                                                146
+Louise Doran                                                                  160                         Karen Partners                                                                146
+Sarath Sewall                                                                 161                         Karen Partners                                                                146
+Clara Vishney                                                                 162                         Alberto Errazuriz                                                             147
+Danielle Greene                                                               163                         Alberto Errazuriz                                                             147
+Mattea Marvins                                                                164                         Alberto Errazuriz                                                             147
+David Lee                                                                     165                         Alberto Errazuriz                                                             147
+Sundar Ande                                                                   166                         Alberto Errazuriz                                                             147
+Amit Banda                                                                    167                         Alberto Errazuriz                                                             147
+Lisa Ozer                                                                     168                         Gerald Cambrault                                                              148
+Harrison Bloom                                                                169                         Gerald Cambrault                                                              148
+Tayler Fox                                                                    170                         Gerald Cambrault                                                              148
+William Smith                                                                 171                         Gerald Cambrault                                                              148
+Elizabeth Bates                                                               172                         Gerald Cambrault                                                              148
+Sundita Kumar                                                                 173                         Gerald Cambrault                                                              148
+Ellen Abel                                                                    174                         Eleni Zlotkey                                                                 149
+Alyssa Hutton                                                                 175                         Eleni Zlotkey                                                                 149
+Jonathon Taylor                                                               176                         Eleni Zlotkey                                                                 149
+Jack Livingston                                                               177                         Eleni Zlotkey                                                                 149
+Kimberely Grant                                                               178                         Eleni Zlotkey                                                                 149
+Charles Johnson                                                               179                         Eleni Zlotkey                                                                 149
+Winston Taylor                                                                180                         Matthew Weiss                                                                 120
+Jean Fleaur                                                                   181                         Matthew Weiss                                                                 120
+Martha Sullivan                                                               182                         Matthew Weiss                                                                 120
+Girard Geoni                                                                  183                         Matthew Weiss                                                                 120
+Nandita Sarchand                                                              184                         Adam Fripp                                                                    121
+Alexis Bull                                                                   185                         Adam Fripp                                                                    121
+Julia Dellinger                                                               186                         Adam Fripp                                                                    121
+Anthony Cabrio                                                                187                         Adam Fripp                                                                    121
+Kelly Chung                                                                   188                         Payam Kaufling                                                                122
+Jennifer Dilly                                                                189                         Payam Kaufling                                                                122
+Timothy Gates                                                                 190                         Payam Kaufling                                                                122
+Randall Perkins                                                               191                         Payam Kaufling                                                                122
+Sarah Bell                                                                    192                         Shanta Vollman                                                                123
+Britney Everett                                                               193                         Shanta Vollman                                                                123
+Samuel McCain                                                                 194                         Shanta Vollman                                                                123
+Vance Jones                                                                   195                         Shanta Vollman                                                                123
+Alana Walsh                                                                   196                         Kevin Mourgos                                                                 124
+Kevin Feeney                                                                  197                         Kevin Mourgos                                                                 124
+Donald OConnell                                                               198                         Kevin Mourgos                                                                 124
+Douglas Grant                                                                 199                         Kevin Mourgos                                                                 124
+Jennifer Whalen                                                               200                         Neena Kochhar                                                                 101
+Michael Hartstein                                                             201                         Steven King                                                                   100
+Pat Fay                                                                       202                         Michael Hartstein                                                             201
+Susan Mavris                                                                  203                         Neena Kochhar                                                                 101
+Hermann Baer                                                                  204                         Neena Kochhar                                                                 101
+Shelley Higgins                                                               205                         Neena Kochhar                                                                 101
+William Gietz                                                                 206                         Shelley Higgins                                                               205
+
+107 rows selected.
+	
+6. The HR department needs a report on job grades and salaries. To familiarize yourself with the SALGRADE table, first show the structure of the SALGRADE table. Then create a query that displays the name, job, department name, salary, and grade for all employees.	Non-Equi Join	
+
+DESC SALGRADE;
+SELECT e.ename,e.job,d.dname,e.sal,s.grade FROM emp e JOIN dept d ON e.deptno=d.deptno JOIN salgrade s ON e.sal BETWEEN s.losal AND s.hisal;
+
+7. Display the ENAME,DNAME of all the employees. Also display those department name which do not have any employees working.	Outer Join
+
+SELECT e.first_name||' '||e.last_name AS employee_name,d.department_name FROM employees e RIGHT OUTER JOIN departments d ON e.department_id=d.department_id;
+
+EMPLOYEE_NAME                                                          DEPARTMENT_NAME
+----------------------------------------------                         ------------------------------
+Jennifer Whalen                                                        Administration
+Pat Fay                                                                Marketing
+Michael Hartstein                                                      Marketing
+Sigal Tobias                                                           Purchasing
+Karen Colmenares                                                       Purchasing
+Shelli Baida                                                           Purchasing
+Den Raphaely                                                           Purchasing
+Alexander Khoo                                                         Purchasing
+Guy Himuro                                                             Purchasing
+Susan Mavris                                                           Human Resources
+Kevin Feeney                                                           Shipping
+Jean Fleaur                                                            Shipping
+Adam Fripp                                                             Shipping
+Timothy Gates                                                          Shipping
+Ki Gee                                                                 Shipping
+Girard Geoni                                                           Shipping
+Douglas Grant                                                          Shipping
+Vance Jones                                                            Shipping
+Payam Kaufling                                                         Shipping
+Renske Ladwig                                                          Shipping
+Britney Everett                                                        Shipping
+Jennifer Dilly                                                         Shipping
+Julia Dellinger                                                        Shipping
+Curtis Davies                                                          Shipping
+Kelly Chung                                                            Shipping
+Anthony Cabrio                                                         Shipping
+Alexis Bull                                                            Shipping
+Laura Bissot                                                           Shipping
+Sarah Bell                                                             Shipping
+Mozhe Atkinson                                                         Shipping
+James Landry                                                           Shipping
+Matthew Weiss                                                          Shipping
+Alana Walsh                                                            Shipping
+Shanta Vollman                                                         Shipping
+Peter Vargas                                                           Shipping
+Winston Taylor                                                         Shipping
+Jason Mallin                                                           Shipping
+Steven Markle                                                          Shipping
+James Marlow                                                           Shipping
+Randall Matos                                                          Shipping
+Samuel McCain                                                          Shipping
+Irene Mikkilineni                                                      Shipping
+Kevin Mourgos                                                          Shipping
+Julia Nayer                                                            Shipping
+Donald OConnell                                                        Shipping
+TJ Olson                                                               Shipping
+Joshua Patel                                                           Shipping
+Randall Perkins                                                        Shipping
+Hazel Philtanker                                                       Shipping
+Trenna Rajs                                                            Shipping
+Michael Rogers                                                         Shipping
+Nandita Sarchand                                                       Shipping
+John Seo                                                               Shipping
+Stephen Stiles                                                         Shipping
+Martha Sullivan                                                        Shipping
+David Austin                                                           IT
+Valli Pataballa                                                        IT
+Bruce Ernst                                                            IT
+Diana Lorentz                                                          IT
+Alexander Hunold                                                       IT
+Hermann Baer                                                           Public Relations
+Ellen Abel                                                             Sales
+Sundar Ande                                                            Sales
+Amit Banda                                                             Sales
+Elizabeth Bates                                                        Sales
+David Bernstein                                                        Sales
+Harrison Bloom                                                         Sales
+Gerald Cambrault                                                       Sales
+Nanette Cambrault                                                      Sales
+Louise Doran                                                           Sales
+Alberto Errazuriz                                                      Sales
+Tayler Fox                                                             Sales
+Danielle Greene                                                        Sales
+Peter Hall                                                             Sales
+Alyssa Hutton                                                          Sales
+Charles Johnson                                                        Sales
+Janette King                                                           Sales
+Sundita Kumar                                                          Sales
+David Lee                                                              Sales
+Jack Livingston                                                        Sales
+Mattea Marvins                                                         Sales
+Allan McEwen                                                           Sales
+Christopher Olsen                                                      Sales
+Lisa Ozer                                                              Sales
+Karen Partners                                                         Sales
+John Russell                                                           Sales
+Sarath Sewall                                                          Sales
+Lindsey Smith                                                          Sales
+William Smith                                                          Sales
+Patrick Sully                                                          Sales
+Jonathon Taylor                                                        Sales
+Peter Tucker                                                           Sales
+Oliver Tuvault                                                         Sales
+Clara Vishney                                                          Sales
+Eleni Zlotkey                                                          Sales
+Neena Kochhar                                                          Executive
+Steven King                                                            Executive
+Lex De Haan                                                            Executive
+Luis Popp                                                              Finance
+Jose Manuel Urman                                                      Finance
+John Chen                                                              Finance
+Daniel Faviet                                                          Finance
+Ismael Sciarra                                                         Finance
+Nancy Greenberg                                                        Finance
+William Gietz                                                          Accounting
+Shelley Higgins                                                        Accounting
+                                                                       Treasury
+                                                                       Corporate Tax
+                                                                       Control And Credit
+                                                                       Shareholder Services
+                                                                       Benefits
+                                                                       Manufacturing
+                                                                       Construction
+                                                                       Contracting
+                                                                       Operations
+                                                                       IT Support
+                                                                       NOC
+                                                                       IT Helpdesk
+                                                                       Government Sales
+                                                                       Retail Sales
+                                                                       Recruiting
+                                                                       Payroll
+
+122 rows selected.
+	
+8. The HR department needs to find the names and hire dates for all employees who were hired before their managers, along with their managers’ names and hire dates.	Self Join with Outer Join	
+
+SQL> SELECT e.first_name||' '||e.last_name AS employee,e.hire_date,m.first_name||' '||m.last_name AS manager,m.hire_date FROM employees e LEFT OUTER JOIN employees m ON e.manager_id=m.employee_id WHERE m.hire_date>e.hire_date;
+
+EMPLOYEE                                                               HIRE_DATE                         MANAGER                                                                HIRE_DATE
+----------------------------------------------                         ---------                         ----------------------------------------------                         ---------
+Lex De Haan                                                            13-JAN-01                         Steven King                                                            17-JUN-03
+Den Raphaely                                                           07-DEC-02                         Steven King                                                            17-JUN-03
+Payam Kaufling                                                         01-MAY-03                         Steven King                                                            17-JUN-03
+Nancy Greenberg                                                        17-AUG-02                         Neena Kochhar                                                          21-SEP-05
+Jennifer Whalen                                                        17-SEP-03                         Neena Kochhar                                                          21-SEP-05
+Susan Mavris                                                           07-JUN-02                         Neena Kochhar                                                          21-SEP-05
+Hermann Baer                                                           07-JUN-02                         Neena Kochhar                                                          21-SEP-05
+Shelley Higgins                                                        07-JUN-02                         Neena Kochhar                                                          21-SEP-05
+David Austin                                                           25-JUN-05                         Alexander Hunold                                                       03-JAN-06
+Daniel Faviet                                                          16-AUG-02                         Nancy Greenberg                                                        17-AUG-02
+James Marlow                                                           16-FEB-05                         Adam Fripp                                                             10-APR-05
+Nandita Sarchand                                                       27-JAN-04                         Adam Fripp                                                             10-APR-05
+Alexis Bull                                                            20-FEB-05                         Adam Fripp                                                             10-APR-05
+Renske Ladwig                                                          14-JUL-03                         Shanta Vollman                                                         10-OCT-05
+Sarah Bell                                                             04-FEB-04                         Shanta Vollman                                                         10-OCT-05
+Britney Everett                                                        03-MAR-05                         Shanta Vollman                                                         10-OCT-05
+Trenna Rajs                                                            17-OCT-03                         Kevin Mourgos                                                          16-NOV-07
+Curtis Davies                                                          29-JAN-05                         Kevin Mourgos                                                          16-NOV-07
+Randall Matos                                                          15-MAR-06                         Kevin Mourgos                                                          16-NOV-07
+Peter Vargas                                                           09-JUL-06                         Kevin Mourgos                                                          16-NOV-07
+Alana Walsh                                                            24-APR-06                         Kevin Mourgos                                                          16-NOV-07
+Kevin Feeney                                                           23-MAY-06                         Kevin Mourgos                                                          16-NOV-07
+Donald OConnell                                                        21-JUN-07                         Kevin Mourgos                                                          16-NOV-07
+Janette King                                                           30-JAN-04                         Karen Partners                                                         05-JAN-05
+Patrick Sully                                                          04-MAR-04                         Karen Partners                                                         05-JAN-05
+Allan McEwen                                                           01-AUG-04                         Karen Partners                                                         05-JAN-05
+Lisa Ozer                                                              11-MAR-05                         Gerald Cambrault                                                       15-OCT-07
+Harrison Bloom                                                         23-MAR-06                         Gerald Cambrault                                                       15-OCT-07
+Tayler Fox                                                             24-JAN-06                         Gerald Cambrault                                                       15-OCT-07
+William Smith                                                          23-FEB-07                         Gerald Cambrault                                                       15-OCT-07
+Elizabeth Bates                                                        24-MAR-07                         Gerald Cambrault                                                       15-OCT-07
+Ellen Abel                                                             11-MAY-04                         Eleni Zlotkey                                                          29-JAN-08
+Alyssa Hutton                                                          19-MAR-05                         Eleni Zlotkey                                                          29-JAN-08
+Jonathon Taylor                                                        24-MAR-06                         Eleni Zlotkey                                                          29-JAN-08
+Jack Livingston                                                        23-APR-06                         Eleni Zlotkey                                                          29-JAN-08
+Kimberely Grant                                                        24-MAY-07                         Eleni Zlotkey                                                          29-JAN-08
+Charles Johnson                                                        04-JAN-08                         Eleni Zlotkey                                                          29-JAN-08
+
+37 rows selected.
+
+9. Display the EMPNO,ENAME,DNAME,LOC  of those employees who are working as CLERK. Use the USING clause.	USING Clause	
+SQL> SELECT employee_id,first_name||' '||last_name AS employee_name,department_name,city FROM employees JOIN departments USING(department_id) JOIN locations USING(location_id) WHERE job_id='PU_CLERK' OR job_id='ST_CLERK' OR job_id='SH_CLERK';
+
+EMPLOYEE_ID    EMPLOYEE_NAME                                     DEPARTMENT_NAME                   CITY
+-----------    ----------------------------------------------    ------------------------------    ------------------------------
+        115    Alexander Khoo                                    Purchasing                        Seattle
+        116    Shelli Baida                                      Purchasing                        Seattle
+        117    Sigal Tobias                                      Purchasing                        Seattle
+        118    Guy Himuro                                        Purchasing                        Seattle
+        119    Karen Colmenares                                  Purchasing                        Seattle
+        125    Julia Nayer                                       Shipping                          South San Francisco
+        126    Irene Mikkilineni                                 Shipping                          South San Francisco
+        127    James Landry                                      Shipping                          South San Francisco
+        128    Steven Markle                                     Shipping                          South San Francisco
+        129    Laura Bissot                                      Shipping                          South San Francisco
+        130    Mozhe Atkinson                                    Shipping                          South San Francisco
+        131    James Marlow                                      Shipping                          South San Francisco
+        132    TJ Olson                                          Shipping                          South San Francisco
+        133    Jason Mallin                                      Shipping                          South San Francisco
+        134    Michael Rogers                                    Shipping                          South San Francisco
+        135    Ki Gee                                            Shipping                          South San Francisco
+        136    Hazel Philtanker                                  Shipping                          South San Francisco
+        137    Renske Ladwig                                     Shipping                          South San Francisco
+        138    Stephen Stiles                                    Shipping                          South San Francisco
+        139    John Seo                                          Shipping                          South San Francisco
+        140    Joshua Patel                                      Shipping                          South San Francisco
+        141    Trenna Rajs                                       Shipping                          South San Francisco
+        142    Curtis Davies                                     Shipping                          South San Francisco
+        143    Randall Matos                                     Shipping                          South San Francisco
+        144    Peter Vargas                                      Shipping                          South San Francisco
+        180    Winston Taylor                                    Shipping                          South San Francisco
+        181    Jean Fleaur                                       Shipping                          South San Francisco
+        182    Martha Sullivan                                   Shipping                          South San Francisco
+        183    Girard Geoni                                      Shipping                          South San Francisco
+        184    Nandita Sarchand                                  Shipping                          South San Francisco
+        185    Alexis Bull                                       Shipping                          South San Francisco
+        186    Julia Dellinger                                   Shipping                          South San Francisco
+        187    Anthony Cabrio                                    Shipping                          South San Francisco
+        188    Kelly Chung                                       Shipping                          South San Francisco
+        189    Jennifer Dilly                                    Shipping                          South San Francisco
+        190    Timothy Gates                                     Shipping                          South San Francisco
+        191    Randall Perkins                                   Shipping                          South San Francisco
+        192    Sarah Bell                                        Shipping                          South San Francisco
+        193    Britney Everett                                   Shipping                          South San Francisco
+        194    Samuel McCain                                     Shipping                          South San Francisco
+        195    Vance Jones                                       Shipping                          South San Francisco
+        196    Alana Walsh                                       Shipping                          South San Francisco
+        197    Kevin Feeney                                      Shipping                          South San Francisco
+        198    Donald OConnell                                   Shipping                          South San Francisco
+        199    Douglas Grant                                     Shipping                          South San Francisco
+
+45 rows selected.
+
+
+10. Display the ENAME,SAL,MGR,DNAME of employees whose salary is more than 2000. Use the ON clause.	On Clause	
+SQL> SELECT employee_id,first_name||' '||last_name AS employee_name,department_name,city FROM employees JOIN departments USING(department_id) JOIN locations USING(location_id) WHERE job_id='PU_CLERK' OR job_id='ST_CLERK' OR job_id='SH_CLERK';
+
+EMPLOYEE_ID    EMPLOYEE_NAME                                     DEPARTMENT_NAME                   CITY
+-----------    ----------------------------------------------    ------------------------------    ------------------------------
+        115    Alexander Khoo                                    Purchasing                        Seattle
+        116    Shelli Baida                                      Purchasing                        Seattle
+        117    Sigal Tobias                                      Purchasing                        Seattle
+        118    Guy Himuro                                        Purchasing                        Seattle
+        119    Karen Colmenares                                  Purchasing                        Seattle
+        125    Julia Nayer                                       Shipping                          South San Francisco
+        126    Irene Mikkilineni                                 Shipping                          South San Francisco
+        127    James Landry                                      Shipping                          South San Francisco
+        128    Steven Markle                                     Shipping                          South San Francisco
+        129    Laura Bissot                                      Shipping                          South San Francisco
+        130    Mozhe Atkinson                                    Shipping                          South San Francisco
+        131    James Marlow                                      Shipping                          South San Francisco
+        132    TJ Olson                                          Shipping                          South San Francisco
+        133    Jason Mallin                                      Shipping                          South San Francisco
+        134    Michael Rogers                                    Shipping                          South San Francisco
+        135    Ki Gee                                            Shipping                          South San Francisco
+        136    Hazel Philtanker                                  Shipping                          South San Francisco
+        137    Renske Ladwig                                     Shipping                          South San Francisco
+        138    Stephen Stiles                                    Shipping                          South San Francisco
+        139    John Seo                                          Shipping                          South San Francisco
+        140    Joshua Patel                                      Shipping                          South San Francisco
+        141    Trenna Rajs                                       Shipping                          South San Francisco
+        142    Curtis Davies                                     Shipping                          South San Francisco
+        143    Randall Matos                                     Shipping                          South San Francisco
+        144    Peter Vargas                                      Shipping                          South San Francisco
+        180    Winston Taylor                                    Shipping                          South San Francisco
+        181    Jean Fleaur                                       Shipping                          South San Francisco
+        182    Martha Sullivan                                   Shipping                          South San Francisco
+        183    Girard Geoni                                      Shipping                          South San Francisco
+        184    Nandita Sarchand                                  Shipping                          South San Francisco
+        185    Alexis Bull                                       Shipping                          South San Francisco
+        186    Julia Dellinger                                   Shipping                          South San Francisco
+        187    Anthony Cabrio                                    Shipping                          South San Francisco
+        188    Kelly Chung                                       Shipping                          South San Francisco
+        189    Jennifer Dilly                                    Shipping                          South San Francisco
+        190    Timothy Gates                                     Shipping                          South San Francisco
+        191    Randall Perkins                                   Shipping                          South San Francisco
+        192    Sarah Bell                                        Shipping                          South San Francisco
+        193    Britney Everett                                   Shipping                          South San Francisco
+        194    Samuel McCain                                     Shipping                          South San Francisco
+        195    Vance Jones                                       Shipping                          South San Francisco
+        196    Alana Walsh                                       Shipping                          South San Francisco
+        197    Kevin Feeney                                      Shipping                          South San Francisco
+        198    Donald OConnell                                   Shipping                          South San Francisco
+        199    Douglas Grant                                     Shipping                          South San Francisco
+
+45 rows selected.
+
+11. Display the EMPNO,ENAME,JOB,DEPTNO,DNAME,LOC of employees. Use LEFT OUTER JOIN.	LEFT OUTER JOIN	
+
+
+SQL> SELECT employee_id,first_name||' '||last_name AS employee_name,job_id,e.department_id,department_name FROM employees e LEFT OUTER JOIN departments d ON e.department_id=d.department_id;
+
+EMPLOYEE_ID    EMPLOYEE_NAME                                     JOB_ID        DEPARTMENT_ID    DEPARTMENT_NAME
+-----------    ----------------------------------------------    ----------    -------------    ------------------------------
+        200    Jennifer Whalen                                   AD_ASST                  10    Administration
+        201    Michael Hartstein                                 MK_MAN                   20    Marketing
+        202    Pat Fay                                           MK_REP                   20    Marketing
+        114    Den Raphaely                                      PU_MAN                   30    Purchasing
+        115    Alexander Khoo                                    PU_CLERK                 30    Purchasing
+        116    Shelli Baida                                      PU_CLERK                 30    Purchasing
+        117    Sigal Tobias                                      PU_CLERK                 30    Purchasing
+        118    Guy Himuro                                        PU_CLERK                 30    Purchasing
+        119    Karen Colmenares                                  PU_CLERK                 30    Purchasing
+        203    Susan Mavris                                      HR_REP                   40    Human Resources
+        120    Matthew Weiss                                     ST_MAN                   50    Shipping
+        121    Adam Fripp                                        ST_MAN                   50    Shipping
+        122    Payam Kaufling                                    ST_MAN                   50    Shipping
+        123    Shanta Vollman                                    ST_MAN                   50    Shipping
+        124    Kevin Mourgos                                     ST_MAN                   50    Shipping
+        125    Julia Nayer                                       ST_CLERK                 50    Shipping
+        126    Irene Mikkilineni                                 ST_CLERK                 50    Shipping
+        127    James Landry                                      ST_CLERK                 50    Shipping
+        128    Steven Markle                                     ST_CLERK                 50    Shipping
+        129    Laura Bissot                                      ST_CLERK                 50    Shipping
+        130    Mozhe Atkinson                                    ST_CLERK                 50    Shipping
+        131    James Marlow                                      ST_CLERK                 50    Shipping
+        132    TJ Olson                                          ST_CLERK                 50    Shipping
+        133    Jason Mallin                                      ST_CLERK                 50    Shipping
+        134    Michael Rogers                                    ST_CLERK                 50    Shipping
+        135    Ki Gee                                            ST_CLERK                 50    Shipping
+        136    Hazel Philtanker                                  ST_CLERK                 50    Shipping
+        137    Renske Ladwig                                     ST_CLERK                 50    Shipping
+        138    Stephen Stiles                                    ST_CLERK                 50    Shipping
+        139    John Seo                                          ST_CLERK                 50    Shipping
+        140    Joshua Patel                                      ST_CLERK                 50    Shipping
+        141    Trenna Rajs                                       ST_CLERK                 50    Shipping
+        142    Curtis Davies                                     ST_CLERK                 50    Shipping
+        143    Randall Matos                                     ST_CLERK                 50    Shipping
+        144    Peter Vargas                                      ST_CLERK                 50    Shipping
+        180    Winston Taylor                                    SH_CLERK                 50    Shipping
+        181    Jean Fleaur                                       SH_CLERK                 50    Shipping
+        182    Martha Sullivan                                   SH_CLERK                 50    Shipping
+        183    Girard Geoni                                      SH_CLERK                 50    Shipping
+        184    Nandita Sarchand                                  SH_CLERK                 50    Shipping
+        185    Alexis Bull                                       SH_CLERK                 50    Shipping
+        186    Julia Dellinger                                   SH_CLERK                 50    Shipping
+        187    Anthony Cabrio                                    SH_CLERK                 50    Shipping
+        188    Kelly Chung                                       SH_CLERK                 50    Shipping
+        189    Jennifer Dilly                                    SH_CLERK                 50    Shipping
+        190    Timothy Gates                                     SH_CLERK                 50    Shipping
+        191    Randall Perkins                                   SH_CLERK                 50    Shipping
+        192    Sarah Bell                                        SH_CLERK                 50    Shipping
+        193    Britney Everett                                   SH_CLERK                 50    Shipping
+        194    Samuel McCain                                     SH_CLERK                 50    Shipping
+        195    Vance Jones                                       SH_CLERK                 50    Shipping
+        196    Alana Walsh                                       SH_CLERK                 50    Shipping
+        197    Kevin Feeney                                      SH_CLERK                 50    Shipping
+        198    Donald OConnell                                   SH_CLERK                 50    Shipping
+        199    Douglas Grant                                     SH_CLERK                 50    Shipping
+        103    Alexander Hunold                                  IT_PROG                  60    IT
+        104    Bruce Ernst                                       IT_PROG                  60    IT
+        105    David Austin                                      IT_PROG                  60    IT
+        106    Valli Pataballa                                   IT_PROG                  60    IT
+        107    Diana Lorentz                                     IT_PROG                  60    IT
+        204    Hermann Baer                                      PR_REP                   70    Public Relations
+        145    John Russell                                      SA_MAN                   80    Sales
+        146    Karen Partners                                    SA_MAN                   80    Sales
+        147    Alberto Errazuriz                                 SA_MAN                   80    Sales
+        148    Gerald Cambrault                                  SA_MAN                   80    Sales
+        149    Eleni Zlotkey                                     SA_MAN                   80    Sales
+        150    Peter Tucker                                      SA_REP                   80    Sales
+        151    David Bernstein                                   SA_REP                   80    Sales
+        152    Peter Hall                                        SA_REP                   80    Sales
+        153    Christopher Olsen                                 SA_REP                   80    Sales
+        154    Nanette Cambrault                                 SA_REP                   80    Sales
+        155    Oliver Tuvault                                    SA_REP                   80    Sales
+        156    Janette King                                      SA_REP                   80    Sales
+        157    Patrick Sully                                     SA_REP                   80    Sales
+        158    Allan McEwen                                      SA_REP                   80    Sales
+        159    Lindsey Smith                                     SA_REP                   80    Sales
+        160    Louise Doran                                      SA_REP                   80    Sales
+        161    Sarath Sewall                                     SA_REP                   80    Sales
+        162    Clara Vishney                                     SA_REP                   80    Sales
+        163    Danielle Greene                                   SA_REP                   80    Sales
+        164    Mattea Marvins                                    SA_REP                   80    Sales
+        165    David Lee                                         SA_REP                   80    Sales
+        166    Sundar Ande                                       SA_REP                   80    Sales
+        167    Amit Banda                                        SA_REP                   80    Sales
+        168    Lisa Ozer                                         SA_REP                   80    Sales
+        169    Harrison Bloom                                    SA_REP                   80    Sales
+        170    Tayler Fox                                        SA_REP                   80    Sales
+        171    William Smith                                     SA_REP                   80    Sales
+        172    Elizabeth Bates                                   SA_REP                   80    Sales
+        173    Sundita Kumar                                     SA_REP                   80    Sales
+        174    Ellen Abel                                        SA_REP                   80    Sales
+        175    Alyssa Hutton                                     SA_REP                   80    Sales
+        176    Jonathon Taylor                                   SA_REP                   80    Sales
+        177    Jack Livingston                                   SA_REP                   80    Sales
+        179    Charles Johnson                                   SA_REP                   80    Sales
+        100    Steven King                                       AD_PRES                  90    Executive
+        101    Neena Kochhar                                     AD_VP                    90    Executive
+        102    Lex De Haan                                       AD_VP                    90    Executive
+        108    Nancy Greenberg                                   FI_MGR                  100    Finance
+        109    Daniel Faviet                                     FI_ACCOUNT              100    Finance
+        110    John Chen                                         FI_ACCOUNT              100    Finance
+        111    Ismael Sciarra                                    FI_ACCOUNT              100    Finance
+        112    Jose Manuel Urman                                 FI_ACCOUNT              100    Finance
+        113    Luis Popp                                         FI_ACCOUNT              100    Finance
+        205    Shelley Higgins                                   AC_MGR                  110    Accounting
+        206    William Gietz                                     AC_ACCOUNT              110    Accounting
+        178    Kimberely Grant                                   SA_REP
+
+107 rows selected.
+
+12. Display the ENAME,DNAME of employees. Use RIGHT OUTER JOIN.	RIGHT OUTER JOIN
+
+SQL> SELECT first_name||' '||last_name AS employee_name,e.department_id,department_name FROM employees e LEFT OUTER JOIN departments d ON e.department_id=d.department_id;
+
+EMPLOYEE_NAME                                     DEPARTMENT_ID    DEPARTMENT_NAME
+----------------------------------------------    -------------    ------------------------------
+Jennifer Whalen                                              10    Administration
+Michael Hartstein                                            20    Marketing
+Pat Fay                                                      20    Marketing
+Den Raphaely                                                 30    Purchasing
+Alexander Khoo                                               30    Purchasing
+Shelli Baida                                                 30    Purchasing
+Sigal Tobias                                                 30    Purchasing
+Guy Himuro                                                   30    Purchasing
+Karen Colmenares                                             30    Purchasing
+Susan Mavris                                                 40    Human Resources
+Matthew Weiss                                                50    Shipping
+Adam Fripp                                                   50    Shipping
+Payam Kaufling                                               50    Shipping
+Shanta Vollman                                               50    Shipping
+Kevin Mourgos                                                50    Shipping
+Julia Nayer                                                  50    Shipping
+Irene Mikkilineni                                            50    Shipping
+James Landry                                                 50    Shipping
+Steven Markle                                                50    Shipping
+Laura Bissot                                                 50    Shipping
+Mozhe Atkinson                                               50    Shipping
+James Marlow                                                 50    Shipping
+TJ Olson                                                     50    Shipping
+Jason Mallin                                                 50    Shipping
+Michael Rogers                                               50    Shipping
+Ki Gee                                                       50    Shipping
+Hazel Philtanker                                             50    Shipping
+Renske Ladwig                                                50    Shipping
+Stephen Stiles                                               50    Shipping
+John Seo                                                     50    Shipping
+Joshua Patel                                                 50    Shipping
+Trenna Rajs                                                  50    Shipping
+Curtis Davies                                                50    Shipping
+Randall Matos                                                50    Shipping
+Peter Vargas                                                 50    Shipping
+Winston Taylor                                               50    Shipping
+Jean Fleaur                                                  50    Shipping
+Martha Sullivan                                              50    Shipping
+Girard Geoni                                                 50    Shipping
+Nandita Sarchand                                             50    Shipping
+Alexis Bull                                                  50    Shipping
+Julia Dellinger                                              50    Shipping
+Anthony Cabrio                                               50    Shipping
+Kelly Chung                                                  50    Shipping
+Jennifer Dilly                                               50    Shipping
+Timothy Gates                                                50    Shipping
+Randall Perkins                                              50    Shipping
+Sarah Bell                                                   50    Shipping
+Britney Everett                                              50    Shipping
+Samuel McCain                                                50    Shipping
+Vance Jones                                                  50    Shipping
+Alana Walsh                                                  50    Shipping
+Kevin Feeney                                                 50    Shipping
+Donald OConnell                                              50    Shipping
+Douglas Grant                                                50    Shipping
+Alexander Hunold                                             60    IT
+Bruce Ernst                                                  60    IT
+David Austin                                                 60    IT
+Valli Pataballa                                              60    IT
+Diana Lorentz                                                60    IT
+Hermann Baer                                                 70    Public Relations
+John Russell                                                 80    Sales
+Karen Partners                                               80    Sales
+Alberto Errazuriz                                            80    Sales
+Gerald Cambrault                                             80    Sales
+Eleni Zlotkey                                                80    Sales
+Peter Tucker                                                 80    Sales
+David Bernstein                                              80    Sales
+Peter Hall                                                   80    Sales
+Christopher Olsen                                            80    Sales
+Nanette Cambrault                                            80    Sales
+Oliver Tuvault                                               80    Sales
+Janette King                                                 80    Sales
+Patrick Sully                                                80    Sales
+Allan McEwen                                                 80    Sales
+Lindsey Smith                                                80    Sales
+Louise Doran                                                 80    Sales
+Sarath Sewall                                                80    Sales
+Clara Vishney                                                80    Sales
+Danielle Greene                                              80    Sales
+Mattea Marvins                                               80    Sales
+David Lee                                                    80    Sales
+Sundar Ande                                                  80    Sales
+Amit Banda                                                   80    Sales
+Lisa Ozer                                                    80    Sales
+Harrison Bloom                                               80    Sales
+Tayler Fox                                                   80    Sales
+William Smith                                                80    Sales
+Elizabeth Bates                                              80    Sales
+Sundita Kumar                                                80    Sales
+Ellen Abel                                                   80    Sales
+Alyssa Hutton                                                80    Sales
+Jonathon Taylor                                              80    Sales
+Jack Livingston                                              80    Sales
+Charles Johnson                                              80    Sales
+Steven King                                                  90    Executive
+Neena Kochhar                                                90    Executive
+Lex De Haan                                                  90    Executive
+Nancy Greenberg                                             100    Finance
+Daniel Faviet                                               100    Finance
+John Chen                                                   100    Finance
+Ismael Sciarra                                              100    Finance
+Jose Manuel Urman                                           100    Finance
+Luis Popp                                                   100    Finance
+Shelley Higgins                                             110    Accounting
+William Gietz                                               110    Accounting
+Kimberely Grant
+
+107 rows selected.
+	
+13. Display the EMPNO,DNAME,LOC of employees. Use FULL OUTER JOIN.	FULL OUTER JOIN
+
+SQL> SELECT employee_id,department_name,city FROM employees e FULL OUTER JOIN departments d ON e.department_id=d.department_id FULL OUTER JOIN locations l ON d.location_id=l.location_id;
+
+EMPLOYEE_ID    DEPARTMENT_NAME                   CITY
+-----------    ------------------------------    ------------------------------
+        100    Executive                         Seattle
+        101    Executive                         Seattle
+        102    Executive                         Seattle
+        103    IT                                Southlake
+        104    IT                                Southlake
+        105    IT                                Southlake
+        106    IT                                Southlake
+        107    IT                                Southlake
+        108    Finance                           Seattle
+        109    Finance                           Seattle
+        110    Finance                           Seattle
+        111    Finance                           Seattle
+        112    Finance                           Seattle
+        113    Finance                           Seattle
+        114    Purchasing                        Seattle
+        115    Purchasing                        Seattle
+        116    Purchasing                        Seattle
+        117    Purchasing                        Seattle
+        118    Purchasing                        Seattle
+        119    Purchasing                        Seattle
+        120    Shipping                          South San Francisco
+        121    Shipping                          South San Francisco
+        122    Shipping                          South San Francisco
+        123    Shipping                          South San Francisco
+        124    Shipping                          South San Francisco
+        125    Shipping                          South San Francisco
+        126    Shipping                          South San Francisco
+        127    Shipping                          South San Francisco
+        128    Shipping                          South San Francisco
+        129    Shipping                          South San Francisco
+        130    Shipping                          South San Francisco
+        131    Shipping                          South San Francisco
+        132    Shipping                          South San Francisco
+        133    Shipping                          South San Francisco
+        134    Shipping                          South San Francisco
+        135    Shipping                          South San Francisco
+        136    Shipping                          South San Francisco
+        137    Shipping                          South San Francisco
+        138    Shipping                          South San Francisco
+        139    Shipping                          South San Francisco
+        140    Shipping                          South San Francisco
+        141    Shipping                          South San Francisco
+        142    Shipping                          South San Francisco
+        143    Shipping                          South San Francisco
+        144    Shipping                          South San Francisco
+        145    Sales                             Oxford
+        146    Sales                             Oxford
+        147    Sales                             Oxford
+        148    Sales                             Oxford
+        149    Sales                             Oxford
+        150    Sales                             Oxford
+        151    Sales                             Oxford
+        152    Sales                             Oxford
+        153    Sales                             Oxford
+        154    Sales                             Oxford
+        155    Sales                             Oxford
+        156    Sales                             Oxford
+        157    Sales                             Oxford
+        158    Sales                             Oxford
+        159    Sales                             Oxford
+        160    Sales                             Oxford
+        161    Sales                             Oxford
+        162    Sales                             Oxford
+        163    Sales                             Oxford
+        164    Sales                             Oxford
+        165    Sales                             Oxford
+        166    Sales                             Oxford
+        167    Sales                             Oxford
+        168    Sales                             Oxford
+        169    Sales                             Oxford
+        170    Sales                             Oxford
+        171    Sales                             Oxford
+        172    Sales                             Oxford
+        173    Sales                             Oxford
+        174    Sales                             Oxford
+        175    Sales                             Oxford
+        176    Sales                             Oxford
+        177    Sales                             Oxford
+        178
+        179    Sales                             Oxford
+        180    Shipping                          South San Francisco
+        181    Shipping                          South San Francisco
+        182    Shipping                          South San Francisco
+        183    Shipping                          South San Francisco
+        184    Shipping                          South San Francisco
+        185    Shipping                          South San Francisco
+        186    Shipping                          South San Francisco
+        187    Shipping                          South San Francisco
+        188    Shipping                          South San Francisco
+        189    Shipping                          South San Francisco
+        190    Shipping                          South San Francisco
+        191    Shipping                          South San Francisco
+        192    Shipping                          South San Francisco
+        193    Shipping                          South San Francisco
+        194    Shipping                          South San Francisco
+        195    Shipping                          South San Francisco
+        196    Shipping                          South San Francisco
+        197    Shipping                          South San Francisco
+        198    Shipping                          South San Francisco
+        199    Shipping                          South San Francisco
+        200    Administration                    Seattle
+        201    Marketing                         Toronto
+        202    Marketing                         Toronto
+        203    Human Resources                   London
+        204    Public Relations                  Munich
+        205    Accounting                        Seattle
+        206    Accounting                        Seattle
+               IT Support                        Seattle
+               Operations                        Seattle
+               Payroll                           Seattle
+               Construction                      Seattle
+               Government Sales                  Seattle
+               Retail Sales                      Seattle
+               Contracting                       Seattle
+               Recruiting                        Seattle
+               Control And Credit                Seattle
+               NOC                               Seattle
+               Treasury                          Seattle
+               Manufacturing                     Seattle
+               Corporate Tax                     Seattle
+               IT Helpdesk                       Seattle
+               Shareholder Services              Seattle
+               Benefits                          Seattle
+                                                 Sydney
+                                                 Singapore
+                                                 Roma
+                                                 South Brunswick
+                                                 Stretford
+                                                 Geneva
+                                                 Utrecht
+                                                 Mexico City
+                                                 Sao Paulo
+                                                 Venice
+                                                 Whitehorse
+                                                 Hiroshima
+                                                 Bern
+                                                 Tokyo
+                                                 Beijing
+                                                 Bombay
+
+139 rows selected.
