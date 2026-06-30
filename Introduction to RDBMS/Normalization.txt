@@ -1,0 +1,59 @@
+
+                                               Normalization
+
+1. Observe the structures of a given EMPLOYEE table as below and suggest if this table can be further Normalized
+EMPNO,ENAME,SAL,DEPTNO,DNAME,LOC
+Explain what normal form this table is and how you can make this into next normal form	Normalization	
+
+This table is in Second Normal Form (2NF), but not in Third Normal Form (3NF).
+EMPNO → DEPTNO
+DEPTNO → DNAME, LOC
+Therefore, the transitive dependency is:
+EMPNO → DNAME, LOC 
+To convert the table into 3NF, we divide the table into two separate tables: 
+
+Table EMPLOYEE:
+EMPNO	ENAME	SAL	DEPTNO
+
+Table DEPARTMENT:
+DEPTNO	DNAME	LOC
+
+2. Observe the structures of a given STUDENT table as below and suggest if this table can be further Normalized
+ROLLNO, NAME,AGE,EXAM, MARKS, GRADE
+Explain what normal form this table is and how you can make this into next normal form	Normalization	
+
+This table is in First Normal Form (1NF) but not in Second Normal Form (2NF).
+
+Assuming the composite primary key is:
+
+(ROLLNO, EXAM);
+There is a partial dependency :
+ROLLNO → NAME, AGE
+
+To convert the table into 2NF, we divide the table into two separate tables:
+Table STUDENT:
+ROLLNO	NAME	AGE
+
+Table RESULT:
+ROLLNO	EXAM	MARKS	GRADE
+
+3. Observe the structure of a given EMPLOYEE table and suggest what kind of problem this table has and how to solve the problem
+EMPNO,PROJECT_NO,NO_OF_DAYS,CUSTOMERNAME
+In the above table EMPNO AND PROJECT_NO both are together a composite primary key 
+
+
+CUSTOMERNAME depends only on PROJECT_NO, not on the entire composite key.
+There is a partial dependency:
+PROJECT_NO → CUSTOMERNAME
+
+Therefore, the table is in 1NF but not in 2NF.
+
+To convert the table into 2NF, we divide the table into two separate tables:
+
+Table EMPLOYEE:
+
+EMPNO	PROJECT_NO	NO_OF_DAYS
+
+Table PROJECT:
+
+PROJECT_NO	CUSTOMERNAME
